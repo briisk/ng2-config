@@ -19,12 +19,23 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: HMR
 });
 
+const definePluginObject = {
+  'ENV': JSON.stringify(METADATA.ENV),
+  'HMR': METADATA.HMR,
+  'process.env': {
+    'ENV': JSON.stringify(METADATA.ENV),
+    'NODE_ENV': JSON.stringify(METADATA.ENV),
+    'HMR': METADATA.HMR,
+  }
+};
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge(commonConfig, {
+  definePluginObject,
 
   /**
    * Merged metadata from webpack.common.js for index.html
@@ -90,15 +101,7 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
     // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
-    new DefinePlugin({
-      'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': METADATA.HMR,
-      'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
-        'NODE_ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
-      }
-    })
+    new DefinePlugin(definePluginObject)
   ],
 
   /**

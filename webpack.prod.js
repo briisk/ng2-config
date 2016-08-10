@@ -24,9 +24,18 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV: ENV,
   HMR: false
 });
+const definePluginObject = {
+  'ENV': JSON.stringify(METADATA.ENV),
+  'HMR': METADATA.HMR,
+  'process.env': {
+    'ENV': JSON.stringify(METADATA.ENV),
+    'NODE_ENV': JSON.stringify(METADATA.ENV),
+    'HMR': METADATA.HMR,
+  }
+};
 
 module.exports = webpackMerge(commonConfig, {
-
+  definePluginObject,
   /**
    * Switch loaders to debug mode.
    *
@@ -117,15 +126,7 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new DefinePlugin({
-      'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': METADATA.HMR,
-      'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
-        'NODE_ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
-      }
-    }),
+    new DefinePlugin(definePluginObject),
 
     /**
      * Plugin: UglifyJsPlugin
