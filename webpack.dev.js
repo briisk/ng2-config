@@ -1,7 +1,6 @@
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
-const apiConfig = require('./api.config');
 
 /**
  * Webpack Plugins
@@ -11,7 +10,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = apiConfig.env;
+const ENV = process.env.ENV = process.env.NODE_ENV;
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig.metadata, {
   host: 'localhost',
@@ -98,9 +97,7 @@ module.exports = webpackMerge(commonConfig, {
         'ENV': JSON.stringify(METADATA.ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
-      },
-      'APIURL': JSON.stringify(apiConfig.apiUrl),
-      'APPVERSION': JSON.stringify(require('../package').version)
+      }
     })
   ],
 

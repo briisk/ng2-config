@@ -7,7 +7,6 @@ const helpers = require('./helpers');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const autoprefixer      = require('autoprefixer');
 
 /*
  * Webpack Constants
@@ -273,9 +272,5 @@ module.exports = {
     clearImmediate: false,
     setImmediate: false,
     fs: 'empty'
-  },
-  postcss: function () {
-    return [autoprefixer];
-  },
-
+  }
 };

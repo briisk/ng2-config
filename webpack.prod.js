@@ -11,12 +11,11 @@ const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-const apiConfig = require('./api.config');
 
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = apiConfig.env;
+const ENV = process.env.ENV = process.env.NODE_ENV;
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const METADATA = webpackMerge(commonConfig.metadata, {
@@ -125,9 +124,7 @@ module.exports = webpackMerge(commonConfig, {
         'ENV': JSON.stringify(METADATA.ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
-      },
-      'APIURL': JSON.stringify(apiConfig.apiUrl),
-      'APPVERSION': JSON.stringify(require('../package').version)
+      }
     }),
 
     /**
