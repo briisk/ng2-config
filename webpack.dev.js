@@ -34,7 +34,7 @@ const definePluginObject = {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge(commonConfig, {
+module.exports = webpackMerge.smart(commonConfig, {
   definePluginObject,
 
   /**

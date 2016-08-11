@@ -17,8 +17,7 @@ const definePluginObject = {
     'ENV': JSON.stringify(ENV),
     'NODE_ENV': JSON.stringify(ENV),
     'HMR': false,
-  },
-  'APPVERSION': JSON.stringify(require('../package').version)
+  }
 };
 /**
  * Webpack configuration

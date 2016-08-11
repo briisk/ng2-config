@@ -34,7 +34,7 @@ const definePluginObject = {
   }
 };
 
-module.exports = webpackMerge(commonConfig, {
+module.exports = webpackMerge.smart(commonConfig, {
   definePluginObject,
   /**
    * Switch loaders to debug mode.
