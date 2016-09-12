@@ -10,14 +10,22 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
-
+const definePluginObject = {
+  'ENV': JSON.stringify(ENV),
+  'HMR': false,
+  'process.env': {
+    'ENV': JSON.stringify(ENV),
+    'NODE_ENV': JSON.stringify(ENV),
+    'HMR': false,
+  }
+};
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = {
-
+  definePluginObject,
   /**
    * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
    *
@@ -213,17 +221,7 @@ module.exports = {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new DefinePlugin({
-      'ENV': JSON.stringify(ENV),
-      'HMR': false,
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV),
-        'HMR': false,
-      },
-      'APIURL': JSON.stringify(''),
-      'APPVERSION': JSON.stringify(require('../package').version)
-    }),
+    new DefinePlugin(definePluginObject),
 
 
   ],

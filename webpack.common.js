@@ -137,7 +137,7 @@ module.exports = {
        */
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: ['awesome-typescript'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 
@@ -148,7 +148,7 @@ module.exports = {
        */
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loaders: ['json']
       },
 
       /*
@@ -159,12 +159,12 @@ module.exports = {
        */
       {
         test: /\.css$/,
-        loader: 'raw'
+        loaders: ['raw', 'resolve-url']
       },
 
       {
         test: /\.scss$/,
-        loader: 'raw!postcss!resolve-url!sass?includePaths[]=' + helpers.root('src/sass')
+        loaders: ['raw', 'postcss', 'resolve-url', 'sass']
       },
 
       /* Raw loader support for *.html
@@ -174,21 +174,21 @@ module.exports = {
        */
       {
         test: /\.html$/,
-        loader: 'raw-loader',
+        loaders: ['raw'],
         exclude: [helpers.root('src/index.html')]
       },
 
       {
         test: /\.jade$/,
-        loader: 'jade'
+        loaders: ['jade']
       },
 
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff&name=[name].[ext]?[hash]" },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff2&name=[name].[ext]?[hash]" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream&name=[name].[ext]?[hash]" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file?name=[name].[ext]?[hash]" },
-      { test: /\.(png|jpg)$/,                  loader: "file?name=[name].[ext]?[hash]" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml&name=[name].[ext]?[hash]" }
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loaders: ['url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]?[hash]'] },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loaders: ['url?limit=10000&mimetype=application/font-woff2&name=fonts/[name].[ext]?[hash]'] },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loaders: ['url?limit=10000&mimetype=application/octet-stream&name=fonts/[name].[ext]?[hash]'] },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loaders: ['file?name=[name].[ext]?[hash]'] },
+      { test: /\.(png|jpg)$/,                  loaders: ['file?name=[name].[ext]?[hash]'] },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loaders: ['url?limit=10000&mimetype=image/svg+xml&name=[name].[ext]?[hash]'] }
 
     ]
 
