@@ -1,7 +1,7 @@
 var path = require('path');
 
 // Helper functions
-var _root = path.resolve(__dirname, '../..');
+var _root = path.resolve(__dirname, '..');
 
 console.log('root directory:', root());
 
