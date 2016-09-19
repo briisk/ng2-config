@@ -217,7 +217,7 @@ module.exports = {
      * See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
      * See: https://github.com/webpack/docs/wiki/optimization#minimize
      */
-    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
 
     /*
      * Plugin: CommonsChunkPlugin
