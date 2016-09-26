@@ -25,7 +25,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: false
 });
 const definePluginObject = {
-  'ENV': JSON.stringify(METADATA.ENV),
   'HMR': METADATA.HMR,
   'process.env': {
     'ENV': JSON.stringify(METADATA.ENV),
