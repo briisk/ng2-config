@@ -11,7 +11,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 const definePluginObject = {
-  'ENV': JSON.stringify(ENV),
   'HMR': false,
   'process.env': {
     'ENV': JSON.stringify(ENV),
