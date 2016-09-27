@@ -112,8 +112,6 @@ module.exports = {
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular2-material'),
           helpers.root('node_modules/@angular'),
-          helpers.root('node_modules/@ngrx/router'),
-          helpers.root('node_modules/@ngrx/core'),
           helpers.root('node_modules/typo-js'),
         ]
       }
