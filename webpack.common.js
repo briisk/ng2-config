@@ -180,7 +180,7 @@ module.exports = {
 
       {
         test: /\.jade$/,
-        loaders: ['jade']
+        loaders: ['pug']
       },
 
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loaders: ['url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]?[hash]'] },
